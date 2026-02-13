@@ -4,7 +4,7 @@ This project analyzes the correlation between market sentiment (Fear & Greed Ind
 ## 📂 Repository Structure
 ds_Manas_Singh/
 ├── csv_files/          # Raw and processed datasets
-├── outputs/            # Visualizations (Charts, Heatmaps, Feature Importance)
+├── outputs/            # Screenshots of all tables
 ├── notebook_1.ipynb    # Main analysis and modeling pipeline
 ├── ds_report.pdf       # Executive summary and findings
 └── README.md           # Project documentation (You are here)
