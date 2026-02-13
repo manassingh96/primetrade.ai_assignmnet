@@ -1,0 +1,21 @@
+Crypto Trader Performance & Sentiment Analysis
+1. Methodology
+This project investigates the correlation between market sentiment (Fear & Greed Index) and trader activity to forecast next-day profitability.
+Data Integration: Historical trade data (over 10,000) was combined with daily Fear & Greed Index data, ensuring precise time-series alignment to prevent look-ahead bias.
+Feature Engineering:
+- Data Sanitization: Leverage was limited to 125x to reduce the effect of outliers, and missing margin data was imputed.
+- Sentiment Encoding: One-Hot Encoding was used to encode sentiment labels to consider market states as separate categories instead of ordinal values.
+- Target Variable: A Next_Day_PnL binary target variable was defined to forecast future performance based on current activity.
+- Modeling: A Random Forest Classifier was used with Time-Series Walk-Forward Validation. This approach simulates actual trading scenarios by training on past data and testing on future data, preventing data leakage.
+
+2. Key Insights
+- The “Fear Profitability” Paradox: Contrary to the Fear state having lower trading volume, it registered the highest total profitability ($3.35M) and average trade amount ($7,816). This suggests the presence of a contrarian trader community making high-confidence trades during periods of market fear.
+- Retail FOMO in Greed Cycles: Days with Extreme Greed sentiment showed a 500% relative increase in trade volume compared to days with a Neutral sentiment, but a dramatic drop in profitability per trade. This points to the entry of poor-quality, noisy trading activity fueled by Fear Of Missing Out (FOMO).
+- Leverage vs. Success: High leverage (>50x) was a lagging indicator of market tops. Successful traders, called “Whales,” kept lower leverage (<5x) while significantly increasing position sizes in volatile markets.
+- Predictive Power: The model had an accuracy of 60.2% with a precision of 0.60 on correctly predicting winning days. The results of the feature importance test showed that Position Size and Sentiment Score were better predictors of success than Leverage.
+
+3. Strategy Recommendations
+Based on the results, the following strategies can be recommended to Primetrade.ai:
+- Dynamic Risk Governor: Automate risk management to lower the maximum allowable retail leverage when the Long/Short Ratio exceeds 2.0 in Extreme Greed phases, thus protecting traders from predictable mean reversion.
+- “Smart Money” Copy Trading: Create a list of traders who have demonstrated positive PnL in Fear phases. These contrarian traders have a higher statistical probability of survival compared to those who trade profitably in a bull market.
+- Volatility-Adjusted Alerts: Employ
